@@ -26,8 +26,9 @@ public class CourseDetail implements Serializable {
 	@Column(name="profeciency_level")
 	private int profeciencyLevel;
 
-	@Column(name="skill_id")
-	private int skillId;
+	//bi-directional many-to-one association to Skill
+	@ManyToOne
+	private Skill skill;
 
 	public CourseDetail() {
 	}
@@ -64,12 +65,12 @@ public class CourseDetail implements Serializable {
 		this.profeciencyLevel = profeciencyLevel;
 	}
 
-	public int getSkillId() {
-		return this.skillId;
+	public Skill getSkill() {
+		return this.skill;
 	}
 
-	public void setSkillId(int skillId) {
-		this.skillId = skillId;
+	public void setSkill(Skill skill) {
+		this.skill = skill;
 	}
 
 }

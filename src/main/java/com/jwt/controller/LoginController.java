@@ -1,6 +1,7 @@
 package com.jwt.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jwt.service.CourseService;
 import com.jwt.service.UserService;
+import com.jwt.vo.CourseDetailVo;
 import com.jwt.vo.LoginUiVo;
 import com.jwt.vo.UserVo;
 
@@ -19,6 +22,9 @@ public class LoginController
 
 	@Autowired
 	private UserService userSvc;
+
+	@Autowired
+	private CourseService courseSvc;
 
 	@RequestMapping(value = "/")
 	public ModelAndView listEmployee(ModelAndView model) throws IOException
@@ -51,6 +57,8 @@ public class LoginController
 			model.addObject("valid", "Actual user");
 			if ("L".equalsIgnoreCase(userData.getUserType()))
 			{
+				List<CourseDetailVo> courseList = courseSvc.getAllCourses();
+				model.addObject("courseList", courseList);
 				model.setViewName("learningConsultantHome");
 			} else if ("ST".equalsIgnoreCase(userData.getUserType()))
 			{

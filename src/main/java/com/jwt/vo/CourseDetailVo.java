@@ -1,5 +1,7 @@
 package com.jwt.vo;
 
+import com.jwt.model.Skill;
+
 public class CourseDetailVo
 {
 
@@ -11,7 +13,7 @@ public class CourseDetailVo
 
 	private int profeciencyLevel;
 
-	private int skillId;
+	private Skill skillDtl;
 
 	public CourseDetailVo()
 	{
@@ -57,14 +59,14 @@ public class CourseDetailVo
 		this.profeciencyLevel = profeciencyLevel;
 	}
 
-	public int getSkillId()
+	public Skill getSkillDtl()
 	{
-		return this.skillId;
+		return skillDtl;
 	}
 
-	public void setSkillId(int skillId)
+	public void setSkillDtl(Skill skillDtl)
 	{
-		this.skillId = skillId;
+		this.skillDtl = skillDtl;
 	}
 
 	@Override
@@ -72,7 +74,7 @@ public class CourseDetailVo
 	{
 		return "CourseDetailVo [id=" + id + ", courseDetail=" + courseDetail
 				+ ", courseName=" + courseName + ", profeciencyLevel="
-				+ profeciencyLevel + ", skillId=" + skillId + "]";
+				+ profeciencyLevel + ", skillDtl=" + skillDtl + "]";
 	}
 
 }

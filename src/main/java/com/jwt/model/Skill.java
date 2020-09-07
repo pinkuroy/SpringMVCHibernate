@@ -2,6 +2,7 @@ package com.jwt.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -22,6 +23,10 @@ public class Skill implements Serializable {
 
 	@Column(name="skill_tag")
 	private String skillTag;
+
+	//bi-directional many-to-one association to CourseDetail
+	@OneToMany(mappedBy="skill")
+	private List<CourseDetail> courseDetails;
 
 	public Skill() {
 	}
@@ -48,6 +53,28 @@ public class Skill implements Serializable {
 
 	public void setSkillTag(String skillTag) {
 		this.skillTag = skillTag;
+	}
+
+	public List<CourseDetail> getCourseDetails() {
+		return this.courseDetails;
+	}
+
+	public void setCourseDetails(List<CourseDetail> courseDetails) {
+		this.courseDetails = courseDetails;
+	}
+
+	public CourseDetail addCourseDetail(CourseDetail courseDetail) {
+		getCourseDetails().add(courseDetail);
+		courseDetail.setSkill(this);
+
+		return courseDetail;
+	}
+
+	public CourseDetail removeCourseDetail(CourseDetail courseDetail) {
+		getCourseDetails().remove(courseDetail);
+		courseDetail.setSkill(null);
+
+		return courseDetail;
 	}
 
 }
