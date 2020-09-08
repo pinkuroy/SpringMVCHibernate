@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jwt.service.CourseService;
 import com.jwt.service.UserService;
 import com.jwt.vo.CourseDetailVo;
+import com.jwt.vo.CourseSearchForm;
 import com.jwt.vo.LoginUiVo;
 import com.jwt.vo.UserVo;
 
@@ -55,6 +56,8 @@ public class LoginController
 		{
 			model.addObject("firstname", userData.getUsername());
 			model.addObject("valid", "Actual user");
+			CourseSearchForm cSearchForm = new CourseSearchForm();
+			model.addObject("courseSearchForm", cSearchForm);
 			if ("L".equalsIgnoreCase(userData.getUserType()))
 			{
 				List<CourseDetailVo> courseList = courseSvc.getAllCourses();
