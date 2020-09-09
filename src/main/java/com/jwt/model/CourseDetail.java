@@ -1,32 +1,37 @@
 package com.jwt.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the course_details database table.
  * 
  */
 @Entity
-@Table(name="course_details")
-@NamedQuery(name="CourseDetail.findAll", query="SELECT c FROM CourseDetail c")
+@Table(name = "course_details")
+@NamedQuery(name = "CourseDetail.findAll", query = "SELECT c FROM CourseDetail c")
 public class CourseDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int id;
 
-	@Column(name="course_detail")
+	@Column(name = "course_detail")
 	private String courseDetail;
 
-	@Column(name="course_name")
+	@Column(name = "course_name")
 	private String courseName;
 
-	@Column(name="profeciency_level")
+	@Column(name = "profeciency_level")
 	private int profeciencyLevel;
 
-	//bi-directional many-to-one association to Skill
+	// bi-directional many-to-one association to Skill
 	@ManyToOne
 	private Skill skill;
 

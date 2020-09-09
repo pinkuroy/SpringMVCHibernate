@@ -45,7 +45,7 @@
 
 					<td>${course.courseName}</td>
 					<td>${course.courseDetail}</td>
-					<td>${course.skillDtl.skillName}</td>
+					<td>${course.skill.skillName}</td>
 					<td>${course.profeciencyLevel}</td>
 					<td><a href="editCourse?id=${course.id}">Edit</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
